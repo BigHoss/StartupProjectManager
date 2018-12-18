@@ -6,25 +6,27 @@ I do a lot of different work and i want a tool to have StartupProjects
 
 ## Idea
 ### Structure
-1. Graphics
+1. **Graphics**
    * PhotoShop
    * Bridge
    * FileManager
    * OneDrive
-1. C# Dev
+1. **C# Dev**
    * Visual Studio
    * Sql Management Studio
-1. C# Web Dev
+1. **C# Web Dev**
    * Visual Studio
    * IIS Manager
    * Notpad++
-1. Motion Graphics
+1. **Motion Graphics**
    * Autodesk Maya
    * Illustrator
    * Pixl Grid Creator
    * Dropbox
-1. Show Preproduction
+1. **Show Preproduction**
    * SketchUp
+   * Ma OnPc
+   * Excel
 
 ### Definition
 When the computer is started, nothing will be run, no tray software, no desktop software. really nothing. and you get to choose what you will be working on.
