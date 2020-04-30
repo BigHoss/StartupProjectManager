@@ -44,6 +44,6 @@ This is the first writeup of a need i had for years. The rough concept is there.
 
 
 ## Sources
-[Reg startup](https://stackoverflow.com/questions/13181009/c-sharp-get-list-of-application-which-runs-on-windows-startup-programatically)
-[Get Icon](https://stackoverflow.com/a/19444650)
+* [Reg startup](https://stackoverflow.com/questions/13181009/c-sharp-get-list-of-application-which-runs-on-windows-startup-programatically)
+* [Get Icon](https://stackoverflow.com/a/19444650)
 
