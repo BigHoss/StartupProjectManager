@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>StartupProjectManager.Database</name>
+    </assembly>
+    <members>
+        <member name="T:StartupProjectManager.Database.DatabaseModule">
+            <summary>
+            Class DatabaseModule.
+            Implements the <see cref="T:Autofac.Module" />
+            </summary>
+            <seealso cref="T:Autofac.Module" />
+        </member>
+        <member name="M:StartupProjectManager.Database.DatabaseModule.Load(Autofac.ContainerBuilder)">
+            <summary>
+            Override to add registrations to the container.
+            </summary>
+            <param name="builder">The builder through which components can be
+            registered.</param>
+            <remarks>Note that the ContainerBuilder parameter is unique to this module.</remarks>
+        </member>
+        <member name="T:StartupProjectManager.Database.Data.StartupProjectManagerContext">
+            <summary>
+            Class StartupProjectManagerContext.
+            Implements the <see cref="T:Microsoft.EntityFrameworkCore.DbContext" />
+            </summary>
+            <seealso cref="T:Microsoft.EntityFrameworkCore.DbContext" />
+        </member>
+        <member name="P:StartupProjectManager.Database.Data.StartupProjectManagerContext.UserName">
+            <summary>
+            Gets or sets the name of the user.
+            </summary>
+            <value>The name of the user.</value>
+        </member>
+        <member name="M:StartupProjectManager.Database.Data.StartupProjectManagerContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{StartupProjectManager.Database.Data.StartupProjectManagerContext})">
+            <summary>
+            Initializes a new instance of the <see cref="T:StartupProjectManager.Database.Data.StartupProjectManagerContext" /> class.
+            </summary>
+            <param name="options">The options.</param>
+        </member>
+        <member name="P:StartupProjectManager.Database.Data.StartupProjectManagerContext.ProjectItems">
+            <summary>
+            Gets or sets the project items.
+            </summary>
+            <value>The project items.</value>
+        </member>
+        <member name="P:StartupProjectManager.Database.Data.StartupProjectManagerContext.ProjectItemTypes">
+            <summary>
+            Gets or sets the project item types.
+            </summary>
+            <value>The project item types.</value>
+        </member>
+        <member name="M:StartupProjectManager.Database.Data.StartupProjectManagerContext.SaveChanges">
+            <summary>
+            <para>
+            Saves all changes made in this context to the database.
+            </para>
+            <para>
+            This method will automatically call <see cref="M:Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.DetectChanges" /> to discover any
+            changes to entity instances before saving to the underlying database. This can be disabled via
+            <see cref="P:Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.AutoDetectChangesEnabled" />.
+            </para>
+            </summary>
+            <returns>The number of state entries written to the database.</returns>
+        </member>
+        <member name="M:StartupProjectManager.Database.Data.StartupProjectManagerContext.SaveChanges(System.Boolean)">
+            <summary>
+            <para>
+            Saves all changes made in this context to the database.
+            </para>
+            <para>
+            This method will automatically call <see cref="M:Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.DetectChanges" /> to discover any
+            changes to entity instances before saving to the underlying database. This can be disabled via
+            <see cref="P:Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.AutoDetectChangesEnabled" />.
+            </para>
+            </summary>
+            <param name="acceptAllChangesOnSuccess">Indicates whether <see cref="M:Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.AcceptAllChanges" /> is called after the changes have
+            been sent successfully to the database.</param>
+            <returns>The number of state entries written to the database.</returns>
+        </member>
+        <member name="M:StartupProjectManager.Database.Data.StartupProjectManagerContext.SaveChangesAsync(System.Threading.CancellationToken)">
+            <summary>
+            <para>
+            Saves all changes made in this context to the database.
+            </para>
+            <para>
+            This method will automatically call <see cref="M:Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.DetectChanges" /> to discover any
+            changes to entity instances before saving to the underlying database. This can be disabled via
+            <see cref="P:Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.AutoDetectChangesEnabled" />.
+            </para>
+            <para>
+            Multiple active operations on the same context instance are not supported.  Use 'await' to ensure
+            that any asynchronous operations have completed before calling another method on this context.
+            </para>
+            </summary>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken" /> to observe while waiting for the task to complete.</param>
+            <returns>A task that represents the asynchronous save operation. The task result contains the
+            number of state entries written to the database.</returns>
+        </member>
+        <member name="M:StartupProjectManager.Database.Data.StartupProjectManagerContext.SaveChangesAsync(System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            <para>
+            Saves all changes made in this context to the database.
+            </para>
+            <para>
+            This method will automatically call <see cref="M:Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.DetectChanges" /> to discover any
+            changes to entity instances before saving to the underlying database. This can be disabled via
+            <see cref="P:Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.AutoDetectChangesEnabled" />.
+            </para>
+            <para>
+            Multiple active operations on the same context instance are not supported.  Use 'await' to ensure
+            that any asynchronous operations have completed before calling another method on this context.
+            </para>
+            </summary>
+            <param name="acceptAllChangesOnSuccess">Indicates whether <see cref="M:Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.AcceptAllChanges" /> is called after the changes have
+            been sent successfully to the database.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken" /> to observe while waiting for the task to complete.</param>
+            <returns>A task that represents the asynchronous save operation. The task result contains the
+            number of state entries written to the database.</returns>
+        </member>
+    </members>
+</doc>

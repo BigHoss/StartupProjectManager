@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>StartupProjectManager.Services</name>
+    </assembly>
+    <members>
+        <member name="T:StartupProjectManager.Services.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:StartupProjectManager.Services.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:StartupProjectManager.Services.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:StartupProjectManager.Services.Properties.Resources.Debug_StartMethod">
+            <summary>
+              Looks up a localized string similar to service&quot;: &quot;{serviceName}&quot;, &quot;method&quot;: &quot;{methodName}&quot;, &quot;parameter&quot;: {@parameter}.
+            </summary>
+        </member>
+        <member name="T:StartupProjectManager.Services.ServicesModule">
+            <summary>
+            Class ServicesModule.
+            Implements the <see cref="T:Autofac.Module" />
+            </summary>
+            <seealso cref="T:Autofac.Module" />
+        </member>
+        <member name="M:StartupProjectManager.Services.ServicesModule.Load(Autofac.ContainerBuilder)">
+            <summary>
+            Override to add registrations to the container.
+            </summary>
+            <param name="builder">The builder through which components can be
+            registered.</param>
+            <remarks>Note that the ContainerBuilder parameter is unique to this module.</remarks>
+        </member>
+        <member name="T:StartupProjectManager.Services.Services.IProjectItemService">
+            <summary>
+            Interface IProjectItemService
+            Implements the <see cref="T:StartupProjectManager.Services.Services.Base.IService" />
+            </summary>
+            <seealso cref="T:StartupProjectManager.Services.Services.Base.IService" />
+        </member>
+        <member name="M:StartupProjectManager.Services.Services.IProjectItemService.GetAllProjectItems">
+            <summary>
+            Gets all project items.
+            </summary>
+            <returns>List&lt;ProjectItem&gt;.</returns>
+        </member>
+        <member name="T:StartupProjectManager.Services.Services.ProjectItemService">
+            <summary>
+            Class ProjectItemService.
+            Implements the <see cref="T:StartupProjectManager.Services.Services.IProjectItemService" />
+            </summary>
+            <seealso cref="T:StartupProjectManager.Services.Services.IProjectItemService" />
+        </member>
+        <member name="F:StartupProjectManager.Services.Services.ProjectItemService._logger">
+            <summary>
+            The logger
+            </summary>
+        </member>
+        <member name="F:StartupProjectManager.Services.Services.ProjectItemService._context">
+            <summary>
+            The context
+            </summary>
+        </member>
+        <member name="M:StartupProjectManager.Services.Services.ProjectItemService.#ctor(Microsoft.Extensions.Logging.ILogger{StartupProjectManager.Services.Services.ProjectItemService},StartupProjectManager.Database.Data.StartupProjectManagerContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StartupProjectManager.Services.Services.ProjectItemService" /> class.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="context">The context.</param>
+        </member>
+        <member name="M:StartupProjectManager.Services.Services.ProjectItemService.LogDebugMethodStart(System.String,System.Collections.Generic.List{System.ValueTuple{System.String,System.String}})">
+            <summary>
+            Logs the debug method start.
+            </summary>
+            <param name="methodName">Name of the method.</param>
+            <param name="parameters">The parameters.</param>
+        </member>
+        <member name="M:StartupProjectManager.Services.Services.ProjectItemService.GetAllProjectItems">
+            <summary>
+            Gets all project items.
+            </summary>
+            <returns>List&lt;ProjectItem&gt;.</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,431 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>StartupProjectManager.Ui</name>
+    </assembly>
+    <members>
+        <member name="T:StartupProjectManager.Ui.App">
+            <summary>
+            Interaction logic for App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:StartupProjectManager.Ui.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:StartupProjectManager.Ui.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:StartupProjectManager.Ui.AppBootstrapper">
+            <summary>
+            Class AppBootstrapper.
+            Implements the <see cref="T:Caliburn.Micro.BootstrapperBase" />
+            </summary>
+            <seealso cref="T:Caliburn.Micro.BootstrapperBase" />
+        </member>
+        <member name="F:StartupProjectManager.Ui.AppBootstrapper.container">
+            <summary>
+            The container
+            </summary>
+        </member>
+        <member name="M:StartupProjectManager.Ui.AppBootstrapper.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:StartupProjectManager.Ui.AppBootstrapper"/> class.
+            </summary>
+        </member>
+        <member name="M:StartupProjectManager.Ui.AppBootstrapper.OnStartup(System.Object,System.Windows.StartupEventArgs)">
+            <summary>
+            Override this to add custom behavior to execute after the application starts.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The args.</param>
+        </member>
+        <member name="M:StartupProjectManager.Ui.AppBootstrapper.Configure">
+            <summary>
+            Override to configure the framework and setup your IoC container.
+            </summary>
+        </member>
+        <member name="M:StartupProjectManager.Ui.AppBootstrapper.GetInstance(System.Type,System.String)">
+            <summary>
+            Override this to provide an IoC specific implementation.
+            </summary>
+            <param name="service">The service to locate.</param>
+            <param name="key">The key to locate.</param>
+            <returns>The located service.</returns>
+        </member>
+        <member name="M:StartupProjectManager.Ui.AppBootstrapper.GetAllInstances(System.Type)">
+            <summary>
+            Override this to provide an IoC specific implementation
+            </summary>
+            <param name="service">The service to locate.</param>
+            <returns>The located services.</returns>
+        </member>
+        <member name="M:StartupProjectManager.Ui.AppBootstrapper.BuildUp(System.Object)">
+            <summary>
+            Override this to provide an IoC specific implementation.
+            </summary>
+            <param name="instance">The instance to perform injection on.</param>
+        </member>
+        <member name="M:StartupProjectManager.Ui.AppBootstrapper.TaskSchedulerOnUnobservedTaskException(System.Object,System.Threading.Tasks.UnobservedTaskExceptionEventArgs)">
+            <summary>
+            Tasks the scheduler on unobserved task exception.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.Threading.Tasks.UnobservedTaskExceptionEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:StartupProjectManager.Ui.AppBootstrapper.CurrentOnDispatcherUnhandledException(System.Object,System.Windows.Threading.DispatcherUnhandledExceptionEventArgs)">
+            <summary>
+            Currents the on dispatcher unhandled exception.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.Windows.Threading.DispatcherUnhandledExceptionEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:StartupProjectManager.Ui.AppBootstrapper.CurrentDomainOnUnhandledException(System.Object,System.UnhandledExceptionEventArgs)">
+            <summary>
+            Currents the domain on unhandled exception.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.UnhandledExceptionEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:StartupProjectManager.Ui.AppBootstrapper.HandleException(System.Exception)">
+            <summary>
+            Handles the exception.
+            </summary>
+            <param name="exception">The exception.</param>
+        </member>
+        <member name="T:StartupProjectManager.Ui.InitializeModule">
+            <summary>
+            Class InitializeModule.
+            Implements the <see cref="T:Autofac.Module" />
+            </summary>
+            <seealso cref="T:Autofac.Module" />
+        </member>
+        <member name="M:StartupProjectManager.Ui.InitializeModule.Load(Autofac.ContainerBuilder)">
+            <summary>
+            Override to add registrations to the container.
+            </summary>
+            <param name="builder">The builder through which components can be
+            registered.</param>
+            <remarks>Note that the ContainerBuilder parameter is unique to this module.</remarks>
+        </member>
+        <member name="T:StartupProjectManager.Ui.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:StartupProjectManager.Ui.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:StartupProjectManager.Ui.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:StartupProjectManager.Ui.Properties.Resources.Error_Exception">
+            <summary>
+              Looks up a localized string similar to &quot;exception&quot;: {@exception}.
+            </summary>
+        </member>
+        <member name="P:StartupProjectManager.Ui.Properties.Resources.Info_UnhandledAppDomainException">
+            <summary>
+              Looks up a localized string similar to Unhandled app domain exception.
+            </summary>
+        </member>
+        <member name="P:StartupProjectManager.Ui.Properties.Resources.Info_UnhandledDispatcherThreadException">
+            <summary>
+              Looks up a localized string similar to Unhandled dispatcher thread exception.
+            </summary>
+        </member>
+        <member name="P:StartupProjectManager.Ui.Properties.Resources.Info_UnhandledTaskException">
+            <summary>
+              Looks up a localized string similar to Unhandled task exception.
+            </summary>
+        </member>
+        <member name="P:StartupProjectManager.Ui.Properties.Resources.Info_ViewLoaded">
+            <summary>
+              Looks up a localized string similar to &quot;viewModel&quot;: &quot;{view}&quot;, &quot;info&quot;: &quot;loaded&quot;.
+            </summary>
+        </member>
+        <member name="T:StartupProjectManager.Ui.Views.ShellView">
+            <summary>
+            Interaction logic for ShellView.xaml
+            </summary>
+            <summary>
+            ShellView
+            </summary>
+        </member>
+        <member name="M:StartupProjectManager.Ui.Views.ShellView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:StartupProjectManager.Ui.Views.StatusBarView">
+            <summary>
+            Interaction logic for StatusBarView.xaml
+            </summary>
+            <summary>
+            StatusBarView
+            </summary>
+        </member>
+        <member name="M:StartupProjectManager.Ui.Views.StatusBarView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:StartupProjectManager.Ui.ViewModels.ShellViewModel">
+            <summary>
+            Class ShellViewModel.
+            Implements the <see cref="T:Caliburn.Micro.Screen" />
+            </summary>
+            <seealso cref="T:Caliburn.Micro.Screen" />
+        </member>
+        <member name="M:StartupProjectManager.Ui.ViewModels.ShellViewModel.#ctor(Microsoft.Extensions.Logging.ILogger{StartupProjectManager.Ui.ViewModels.ShellViewModel},Caliburn.Micro.IEventAggregator,StartupProjectManager.Ui.UiParts.Content.ViewModels.ContentConductorViewModel)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StartupProjectManager.Ui.ViewModels.ShellViewModel" /> class.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="aggregator">The aggregator.</param>
+        </member>
+        <member name="M:StartupProjectManager.Ui.ViewModels.ShellViewModel.OnViewLoaded(System.Object)">
+            <summary>
+            Called when an attached view's Loaded event fires.
+            </summary>
+            <param name="view">The view.</param>
+        </member>
+        <member name="T:StartupProjectManager.Ui.ViewModels.MenuBarViewModel">
+            <summary>
+            Class MenuBarViewModel.
+            Implements the <see cref="T:Caliburn.Micro.Screen" />
+            </summary>
+            <seealso cref="T:Caliburn.Micro.Screen" />
+        </member>
+        <member name="M:StartupProjectManager.Ui.ViewModels.MenuBarViewModel.#ctor(Microsoft.Extensions.Logging.ILogger{StartupProjectManager.Ui.ViewModels.MenuBarViewModel},Caliburn.Micro.IEventAggregator)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StartupProjectManager.Ui.ViewModels.MenuBarViewModel"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="aggregator">The aggregator.</param>
+        </member>
+        <member name="M:StartupProjectManager.Ui.ViewModels.MenuBarViewModel.OnViewLoaded(System.Object)">
+            <summary>
+            Called when an attached view's Loaded event fires.
+            </summary>
+            <param name="view">The view.</param>
+        </member>
+        <member name="P:StartupProjectManager.Ui.ViewModels.MenuBarViewModel.CanFileMenuNew">
+            <summary>
+            Gets a value indicating whether this instance can file menu new.
+            </summary>
+            <value><c>true</c> if this instance can file menu new; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="M:StartupProjectManager.Ui.ViewModels.MenuBarViewModel.FileMenuNew">
+            <summary>
+            Files the menu new.
+            </summary>
+        </member>
+        <member name="T:StartupProjectManager.Ui.UiParts.Content.ViewModels.ContentConductorViewModel">
+            <summary>
+            Class ContentConductorViewModel.
+            Implements the <see cref="T:Caliburn.Micro.Conductor`1.Collection.AllActive" />
+            </summary>
+            <seealso cref="T:Caliburn.Micro.Conductor`1.Collection.AllActive" />
+        </member>
+        <member name="P:StartupProjectManager.Ui.UiParts.Content.ViewModels.ContentConductorViewModel.MenuBarViewModel">
+            <summary>
+            Gets or sets the menu bar.
+            </summary>
+            <value>The menu bar.</value>
+        </member>
+        <member name="P:StartupProjectManager.Ui.UiParts.Content.ViewModels.ContentConductorViewModel.ProjectTreeViewModel">
+            <summary>
+            Gets or sets the project tree.
+            </summary>
+            <value>The project tree.</value>
+        </member>
+        <member name="P:StartupProjectManager.Ui.UiParts.Content.ViewModels.ContentConductorViewModel.DetailConductorViewModel">
+            <summary>
+            Gets or sets the detail conductor view model.
+            </summary>
+            <value>The detail conductor view model.</value>
+        </member>
+        <member name="M:StartupProjectManager.Ui.UiParts.Content.ViewModels.ContentConductorViewModel.#ctor(Microsoft.Extensions.Logging.ILogger{StartupProjectManager.Ui.UiParts.Content.ViewModels.ContentConductorViewModel},StartupProjectManager.Ui.ViewModels.MenuBarViewModel,StartupProjectManager.Ui.UiParts.ProjectTree.ViewModels.ProjectTreeViewModel,StartupProjectManager.Ui.UiParts.Detail.ViewModels.DetailConductorViewModel)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StartupProjectManager.Ui.UiParts.Content.ViewModels.ContentConductorViewModel" /> class.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="menuBarViewModel">The menu bar view model.</param>
+            <param name="projectTreeViewModel">The project TreeView model.</param>
+            <param name="detailConductorViewModel">The detail conductor view model.</param>
+        </member>
+        <member name="M:StartupProjectManager.Ui.UiParts.Content.ViewModels.ContentConductorViewModel.OnActivationProcessed(Caliburn.Micro.Screen,System.Boolean)">
+            <summary>
+            Called by a subclass when an activation needs processing.
+            </summary>
+            <param name="item">The item on which activation was attempted.</param>
+            <param name="success">if set to <c>true</c> activation was successful.</param>
+        </member>
+        <member name="T:StartupProjectManager.Ui.UiParts.Content.Views.ContentConductorView">
+            <summary>
+            Interaction logic for ContentConductorView.xaml
+            </summary>
+            <summary>
+            ContentConductorView
+            </summary>
+        </member>
+        <member name="M:StartupProjectManager.Ui.UiParts.Content.Views.ContentConductorView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:StartupProjectManager.Ui.UiParts.Detail.ViewModels.DetailConductorViewModel">
+            <summary>
+            Class DetailConductorViewModel.
+            Implements the <see cref="T:Caliburn.Micro.Conductor`1.Collection.OneActive" />
+            Implements the <see cref="T:StartupProjectManager.Ui.Detail.Messages.OpenProjectItemMessage" />
+            </summary>
+            <seealso cref="T:Caliburn.Micro.Conductor`1.Collection.OneActive" />
+            <seealso cref="T:StartupProjectManager.Ui.Detail.Messages.OpenProjectItemMessage" />
+        </member>
+        <member name="M:StartupProjectManager.Ui.UiParts.Detail.ViewModels.DetailConductorViewModel.#ctor(Microsoft.Extensions.Logging.ILogger{StartupProjectManager.Ui.UiParts.Detail.ViewModels.DetailConductorViewModel},Caliburn.Micro.IEventAggregator)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StartupProjectManager.Ui.UiParts.Detail.ViewModels.DetailConductorViewModel" /> class.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="eventAggregator">The event aggregator.</param>
+        </member>
+        <member name="M:StartupProjectManager.Ui.UiParts.Detail.ViewModels.DetailConductorViewModel.HandleAsync(StartupProjectManager.Ui.Detail.Messages.OpenProjectItemMessage,System.Threading.CancellationToken)">
+            <summary>
+            Handles the message.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <returns>A task that represents the asynchronous coroutine.</returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:StartupProjectManager.Ui.UiParts.Detail.Views.DetailConductorView">
+            <summary>
+            Interaction logic for DetailConductorView.xaml
+            </summary>
+            <summary>
+            DetailConductorView
+            </summary>
+        </member>
+        <member name="M:StartupProjectManager.Ui.UiParts.Detail.Views.DetailConductorView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:StartupProjectManager.Ui.UiParts.MenuBar.Views.MenuBarView">
+            <summary>
+            Interaction logic for MenuBarView.xaml
+            </summary>
+            <summary>
+            MenuBarView
+            </summary>
+        </member>
+        <member name="M:StartupProjectManager.Ui.UiParts.MenuBar.Views.MenuBarView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:StartupProjectManager.Ui.UiParts.ProjectTree.ViewModels.ProjectTreeViewModel">
+            <summary>
+            Class ProjectTreeViewModel.
+            Implements the <see cref="T:Caliburn.Micro.Screen" />
+            </summary>
+            <seealso cref="T:Caliburn.Micro.Screen" />
+        </member>
+        <member name="P:StartupProjectManager.Ui.UiParts.ProjectTree.ViewModels.ProjectTreeViewModel.ProjectItems">
+            <summary>
+            Gets or sets the project items.
+            </summary>
+            <value>The project items.</value>
+        </member>
+        <member name="P:StartupProjectManager.Ui.UiParts.ProjectTree.ViewModels.ProjectTreeViewModel.SelectedProjectItem">
+            <summary>
+            Gets or sets the selected project item.
+            </summary>
+            <value>The selected project item.</value>
+        </member>
+        <member name="M:StartupProjectManager.Ui.UiParts.ProjectTree.ViewModels.ProjectTreeViewModel.#ctor(Microsoft.Extensions.Logging.ILogger{StartupProjectManager.Ui.UiParts.ProjectTree.ViewModels.ProjectTreeViewModel},StartupProjectManager.Services.Services.IProjectItemService,Caliburn.Micro.IEventAggregator)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StartupProjectManager.Ui.UiParts.ProjectTree.ViewModels.ProjectTreeViewModel" /> class.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="projectItemService">The project item service.</param>
+            <param name="eventAggregator">The event aggregator.</param>
+        </member>
+        <member name="M:StartupProjectManager.Ui.UiParts.ProjectTree.ViewModels.ProjectTreeViewModel.OnViewLoaded(System.Object)">
+            <summary>
+            Called when an attached view's Loaded event fires.
+            </summary>
+            <param name="view">The view.</param>
+        </member>
+        <member name="M:StartupProjectManager.Ui.UiParts.ProjectTree.ViewModels.ProjectTreeViewModel.AddProjectItem">
+            <summary>
+            Adds the project item.
+            </summary>
+            <returns>Task.</returns>
+        </member>
+        <member name="M:StartupProjectManager.Ui.UiParts.ProjectTree.ViewModels.ProjectTreeViewModel.HandleAsync(StartupProjectManager.Ui.UiParts.ProjectTree.Messages.AddProjectItemMessage,System.Threading.CancellationToken)">
+            <summary>
+            Handles the message.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <returns>A task that represents the asynchronous coroutine.</returns>
+        </member>
+        <member name="T:StartupProjectManager.Ui.UiParts.ProjectTree.Views.ProjectTreeView">
+            <summary>
+            Interaction logic for ProjectTreeView.xaml
+            </summary>
+            <summary>
+            ProjectTreeView
+            </summary>
+        </member>
+        <member name="M:StartupProjectManager.Ui.UiParts.ProjectTree.Views.ProjectTreeView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
+            </summary>
+        </member>
+    </members>
+</doc>
