@@ -24,7 +24,7 @@ namespace StartupProjectManager.Database.Data
         /// Gets or sets the name of the user.
         /// </summary>
         /// <value>The name of the user.</value>
-        public string UserName { get; set; }
+        public string UserName { get; set; } = Environment.UserName;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="StartupProjectManagerContext" /> class.
@@ -32,7 +32,7 @@ namespace StartupProjectManager.Database.Data
         /// <param name="options">The options.</param>
         public StartupProjectManagerContext(DbContextOptions<StartupProjectManagerContext> options) : base(options)
         {
-            
+
         }
 
         /// <summary>
@@ -105,30 +105,15 @@ namespace StartupProjectManager.Database.Data
             return base.SaveChangesAsync(cancellationToken);
         }
 
-        /// <summary>
-        /// <para>
-        /// Saves all changes made in this context to the database.
-        /// </para>
-        /// <para>
-        /// This method will automatically call <see cref="M:Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.DetectChanges" /> to discover any
-        /// changes to entity instances before saving to the underlying database. This can be disabled via
-        /// <see cref="P:Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.AutoDetectChangesEnabled" />.
-        /// </para>
-        /// <para>
-        /// Multiple active operations on the same context instance are not supported.  Use 'await' to ensure
-        /// that any asynchronous operations have completed before calling another method on this context.
-        /// </para>
-        /// </summary>
-        /// <param name="acceptAllChangesOnSuccess">Indicates whether <see cref="M:Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.AcceptAllChanges" /> is called after the changes have
-        /// been sent successfully to the database.</param>
-        /// <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken" /> to observe while waiting for the task to complete.</param>
-        /// <returns>A task that represents the asynchronous save operation. The task result contains the
-        /// number of state entries written to the database.</returns>
-        public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess,
-                                                   CancellationToken cancellationToken = new CancellationToken())
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            AddAuditData();
-            return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
+            modelBuilder.Entity<ProjectItemType>()
+                        .Property(p => p.Name)
+                        .HasConversion(x => x.ToString(),
+                            v => (ProjectItemTypeEnum)Enum.Parse(typeof(ProjectItemTypeEnum), v)
+                        );
+
+            modelBuilder.Seed();
         }
 
         private void AddAuditData()
@@ -141,7 +126,7 @@ namespace StartupProjectManager.Database.Data
 
             foreach (var entry in entities)
             {
-                if (entry is IEntity entity)
+                if (entry.Entity is IEntity entity)
                 {
                     entity.ModifiedBy = UserName;
                     entity.ModifiedOn = now;

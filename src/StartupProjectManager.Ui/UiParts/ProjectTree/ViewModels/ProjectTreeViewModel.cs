@@ -6,15 +6,16 @@
 namespace StartupProjectManager.Ui.UiParts.ProjectTree.ViewModels
 {
     using System;
+    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
-    using System.Windows.Documents;
     using Caliburn.Micro;
     using Database.Model;
     using Messages;
     using Microsoft.Extensions.Logging;
     using Properties;
-    using Services.Services;
+    using StartupProjectManager.Services.Services;
+    using StartupProjectManager.Services.Services.ProjectItem;
     using Ui.Detail.Messages;
     using Views;
 
@@ -23,15 +24,19 @@ namespace StartupProjectManager.Ui.UiParts.ProjectTree.ViewModels
     /// Implements the <see cref="Screen" />
     /// </summary>
     /// <seealso cref="Caliburn.Micro.Screen" />
-    public class ProjectTreeViewModel : Screen, IHandle<AddProjectItemMessage>
+    // ReSharper disable once ClassNeverInstantiated.Global
+    public class ProjectTreeViewModel : Screen,
+                                        IHandle<AddProjectItemMessage>,
+                                        IHandle<AddSubProjectItemMessage>,
+                                        IHandle<UpdateProjectItemMessage>
     {
 
         private readonly IProjectItemService _projectItemService;
         private readonly IEventAggregator _eventAggregator;
         private readonly ILogger<ProjectTreeViewModel> _logger;
 
-        private BindableCollection<ProjectItem> projectItems;
-        private ProjectItem selectedProjectItem;
+        private BindableCollection<ProjectItem> projectItems = new BindableCollection<ProjectItem>();
+        private ProjectItem selectedProjectItem = new ProjectItem();
 
 
 
@@ -42,11 +47,7 @@ namespace StartupProjectManager.Ui.UiParts.ProjectTree.ViewModels
         public BindableCollection<ProjectItem> ProjectItems
         {
             get => projectItems;
-            set
-            {
-                projectItems = value;
-                NotifyOfPropertyChange(() => ProjectItems);
-            }
+            set => Set(ref projectItems, value, nameof(ProjectItems));
         }
 
 
@@ -59,9 +60,8 @@ namespace StartupProjectManager.Ui.UiParts.ProjectTree.ViewModels
             get => selectedProjectItem;
             set
             {
-                selectedProjectItem = value;
-                NotifyOfPropertyChange(() => SelectedProjectItem);
-                _eventAggregator.PublishOnUIThreadAsync(new OpenProjectItemMessage(value));
+                Set(ref selectedProjectItem, value, nameof(SelectedProjectItem));
+                _eventAggregator.PublishOnUIThread(new OpenProjectItemMessage(value));
             }
         }
 
@@ -88,42 +88,66 @@ namespace StartupProjectManager.Ui.UiParts.ProjectTree.ViewModels
         protected override void OnViewLoaded(object view)
         {
             _logger.LogDebug(Resources.Info_ViewLoaded, nameof(ProjectTreeView));
-            ProjectItems = new BindableCollection<ProjectItem>(_projectItemService.GetAllProjectItems());
+            _eventAggregator.Subscribe(this);
+
+            ProjectItems = new BindableCollection<ProjectItem>(_projectItemService.GetAll());
         }
-
-        private bool myVar;
-
-        public bool MyProperty
-        {
-            get { return myVar; }
-            set { myVar = value; }
-        }
-
 
         /// <summary>
         /// Adds the project item.
         /// </summary>
         /// <returns>Task.</returns>
-        public Task AddProjectItem()
+        /// <exception cref="NotImplementedException"></exception>
+        public void AddProjectItem()
         {
-            throw new NotImplementedException();
+            var newItem = _projectItemService.Add();
+
+            ProjectItems.Add(newItem);
+
+            SelectedProjectItem = newItem;
         }
 
 
-
-        public Task AddSubProjectItem()
+        /// <summary>
+        /// Adds the sub project item.
+        /// </summary>
+        /// <returns>Task.</returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public void AddSubProjectItem()
         {
-            throw new NotImplementedException();
+            var newItem = _projectItemService.Add(SelectedProjectItem?.Id);
+
+            ProjectItems.Add(newItem);
+
+            SelectedProjectItem = newItem;
         }
+
 
         /// <summary>
         /// Handles the message.
         /// </summary>
         /// <param name="message">The message.</param>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>A task that represents the asynchronous coroutine.</returns>
-        public Task HandleAsync(AddProjectItemMessage message,
-                                CancellationToken cancellationToken) =>
-            AddProjectItem();
+        public void Handle(AddSubProjectItemMessage message) => AddSubProjectItem();
+
+        /// <summary>
+        /// Handles the message.
+        /// </summary>
+        /// <param name="message">The message.</param>
+        public void Handle(UpdateProjectItemMessage message)
+        {
+            ProjectItems = new BindableCollection<ProjectItem>(ProjectItems.Where(x => x.Id == message.ProjectItem.Id)
+                                                                              .Select(y => { return message.ProjectItem; })
+                                                                              .ToList());
+
+            _projectItemService.Update(message.ProjectItem);
+        } 
+
+        /// <summary>
+        /// Handles the message.
+        /// </summary>
+        /// <param name="message">The message.</param>
+        public void Handle(AddProjectItemMessage message) => AddProjectItem();
+
+
     }
 }

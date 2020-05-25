@@ -8,9 +8,12 @@ namespace StartupProjectManager.Ui.UiParts.Detail.ViewModels
     using System.Threading;
     using System.Threading.Tasks;
     using Caliburn.Micro;
+    using Database.Model;
+    using Messages;
     using Microsoft.Extensions.Logging;
-    using Ui.Detail.Messages;
-
+    using Properties;
+    using StartupProjectManager.Ui.Detail.Messages;
+    
     /// <summary>
     /// Class DetailConductorViewModel.
     /// Implements the <see cref="Conductor{T}.Collection.OneActive" />
@@ -18,31 +21,67 @@ namespace StartupProjectManager.Ui.UiParts.Detail.ViewModels
     /// </summary>
     /// <seealso cref="Conductor{T}.Collection.OneActive" />
     /// <seealso cref="OpenProjectItemMessage" />
-    public class DetailConductorViewModel : Conductor<Screen>.Collection.OneActive, IHandle<OpenProjectItemMessage>
+    public class DetailConductorViewModel : Conductor<Screen>.Collection.OneActive,
+                                            IHandle<OpenProjectItemMessage>
     {
         private readonly ILogger<DetailConductorViewModel> _logger;
         private readonly IEventAggregator _eventAggregator;
+        private readonly ApplicationDetailViewModel _applicationDetailViewModel;
+        private readonly NewDetailViewModel _newDetailViewModel;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DetailConductorViewModel" /> class.
         /// </summary>
         /// <param name="logger">The logger.</param>
         /// <param name="eventAggregator">The event aggregator.</param>
+        /// <param name="applicationDetailViewModel">The application detail view model.</param>
+        /// <param name="newDetailViewModel">The new detail view model.</param>
         public DetailConductorViewModel(ILogger<DetailConductorViewModel> logger,
-                                        IEventAggregator eventAggregator)
+                                        IEventAggregator eventAggregator,
+                                        ApplicationDetailViewModel applicationDetailViewModel,
+                                        NewDetailViewModel newDetailViewModel)
         {
             _logger = logger;
             _eventAggregator = eventAggregator;
+            _applicationDetailViewModel = applicationDetailViewModel;
+            _newDetailViewModel = newDetailViewModel;
         }
+
+        /// <summary>
+        /// Called when an attached view's Loaded event fires.
+        /// </summary>
+        /// <param name="view">The view.</param>
+        protected override void OnViewLoaded(object view)
+        {
+            _logger.LogDebug(Resources.Info_ViewLoaded, nameof(DetailConductorViewModel));
+            _eventAggregator.Subscribe(this);
+        }
+
+
         /// <summary>
         /// Handles the message.
         /// </summary>
         /// <param name="message">The message.</param>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>A task that represents the asynchronous coroutine.</returns>
         /// <exception cref="System.NotImplementedException"></exception>
-        public Task HandleAsync(OpenProjectItemMessage message,
-                                CancellationToken cancellationToken) =>
-            throw new System.NotImplementedException();
+        public void Handle(OpenProjectItemMessage message)
+        {
+            var projectItem = message.ProjectItem;
+
+            switch (projectItem.ItemType.Name)
+            {
+                case ProjectItemTypeEnum.Root:
+                    break;
+                case ProjectItemTypeEnum.Application:
+                    ActivateItem(_applicationDetailViewModel);
+                    break;
+                case ProjectItemTypeEnum.Document:
+                    break;
+                case ProjectItemTypeEnum.New:
+                    ActivateItem(_newDetailViewModel);
+                    break;
+            }
+            _eventAggregator.PublishOnUIThread(new OpenDetailMessage(projectItem));
+        }
+
     }
 }

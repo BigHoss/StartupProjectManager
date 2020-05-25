@@ -8,6 +8,7 @@ namespace StartupProjectManager.Database
     using Autofac;
     using Data;
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Caching.Memory;
     using Microsoft.Extensions.Configuration;
 
     /// <summary>
@@ -26,6 +27,7 @@ namespace StartupProjectManager.Database
         protected override void Load(ContainerBuilder builder) => builder.Register(c =>
             {
                 var configuration = c.Resolve<IConfiguration>();
+
                 
                 var contextOptionsBuilder = new DbContextOptionsBuilder<StartupProjectManagerContext>()
                     .UseSqlite(configuration["ConnectionStrings:Default"]);

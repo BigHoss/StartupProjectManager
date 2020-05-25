@@ -1,26 +1,21 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
-namespace StartupProjectManager.Ui.Views
+// ***********************************************************************
+// Assembly         : StartupProjectManager.Ui
+// Author           : Rku
+// Created          : 05-04-2020
+// ***********************************************************************
+namespace StartupProjectManager.Ui
 {
+    using System.Windows;
+
     /// <summary>
     /// Interaction logic for ShellView.xaml
     /// </summary>
+    // ReSharper disable once RedundantExtendsListEntry
     public partial class ShellView : Window
     {
-        public ShellView()
-        {
-            InitializeComponent();
-        }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ShellView"/> class.
+        /// </summary>
+        public ShellView() => InitializeComponent();
     }
 }

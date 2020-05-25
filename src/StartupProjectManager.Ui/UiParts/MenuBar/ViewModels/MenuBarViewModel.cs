@@ -3,11 +3,12 @@
 // Author           : Rku
 // Created          : 05-04-2020
 // ***********************************************************************
-namespace StartupProjectManager.Ui.ViewModels
+namespace StartupProjectManager.Ui.UiParts.MenuBar.ViewModels
 {
     using Caliburn.Micro;
     using Microsoft.Extensions.Logging;
-    using UiParts.ProjectTree.Messages;
+    using ProjectTree.Messages;
+    using Properties;
 
     /// <summary>
     /// Class MenuBarViewModel.
@@ -16,7 +17,7 @@ namespace StartupProjectManager.Ui.ViewModels
     /// <seealso cref="Caliburn.Micro.Screen" />
     public class MenuBarViewModel : Screen
     {
-        private IEventAggregator _aggregator;
+        private readonly IEventAggregator _aggregator;
         private readonly ILogger<MenuBarViewModel> _logger;
 
         /// <summary>
@@ -37,6 +38,7 @@ namespace StartupProjectManager.Ui.ViewModels
         /// <param name="view">The view.</param>
         protected override void OnViewLoaded(object view)
         {
+            _logger.LogDebug(Resources.Info_ViewLoaded, nameof(MenuBarViewModel));
             _aggregator.Subscribe(this);
         }
 
@@ -44,14 +46,13 @@ namespace StartupProjectManager.Ui.ViewModels
         /// Gets a value indicating whether this instance can file menu new.
         /// </summary>
         /// <value><c>true</c> if this instance can file menu new; otherwise, <c>false</c>.</value>
+        // ReSharper disable once UnusedMember.Global
         public bool CanFileMenuNew => true;
 
         /// <summary>
         /// Files the menu new.
         /// </summary>
-        public void FileMenuNew()
-        {
-            _aggregator.PublishOnUIThreadAsync(new AddProjectItemMessage());
-        }
+        // ReSharper disable once UnusedMember.Global
+        public void FileMenuNew() => _aggregator.PublishOnUIThreadAsync(new AddProjectItemMessage());
     }
 }

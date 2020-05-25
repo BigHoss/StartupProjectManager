@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:StartupProjectManager.Ui.UiParts.Detail.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             Background="Red">
+             >
     <Grid>
             <ContentControl x:Name="ActiveItem"/>
     </Grid>

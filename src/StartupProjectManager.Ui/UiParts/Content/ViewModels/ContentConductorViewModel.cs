@@ -8,16 +8,17 @@ namespace StartupProjectManager.Ui.UiParts.Content.ViewModels
     using System.Threading;
     using Caliburn.Micro;
     using Detail.ViewModels;
+    using MenuBar.ViewModels;
     using Microsoft.Extensions.Logging;
     using ProjectTree.ViewModels;
     using Properties;
-    using Ui.ViewModels;
 
     /// <summary>
     /// Class ContentConductorViewModel.
     /// Implements the <see cref="Conductor{Screen}.Collection.AllActive" />
     /// </summary>
     /// <seealso cref="Conductor{Screen}.Collection.AllActive" />
+    // ReSharper disable once ClassNeverInstantiated.Global
     public class ContentConductorViewModel : Conductor<Screen>.Collection.AllActive
     {
         private readonly ILogger<ContentConductorViewModel> _logger;
@@ -88,18 +89,18 @@ namespace StartupProjectManager.Ui.UiParts.Content.ViewModels
         }
 
         /// <summary>
-        /// Called by a subclass when an activation needs processing.
+        /// Called when an attached view's Loaded event fires.
         /// </summary>
-        /// <param name="item">The item on which activation was attempted.</param>
-        /// <param name="success">if set to <c>true</c> activation was successful.</param>
-        protected override void OnActivationProcessed(Screen item,
-                                                      bool success)
+        /// <param name="view">The view.</param>
+        protected override void OnViewLoaded(object view)
         {
             _logger.LogDebug(Resources.Info_ViewLoaded, nameof(ContentConductorViewModel));
-            
-            ActivateItemAsync(MenuBarViewModel, new CancellationToken());
-            ActivateItemAsync(ProjectTreeViewModel, new CancellationToken());
-            ActivateItemAsync(DetailConductorViewModel, new CancellationToken());
+
+            ActivateItem(MenuBarViewModel);
+            ActivateItem(ProjectTreeViewModel);
+            ActivateItem(DetailConductorViewModel);
         }
+
+        
     }
 }

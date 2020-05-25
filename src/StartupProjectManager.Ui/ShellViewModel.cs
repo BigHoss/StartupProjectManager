@@ -3,48 +3,51 @@
 // Author           : Rku
 // Created          : 04-30-2020
 // ***********************************************************************
-namespace StartupProjectManager.Ui.ViewModels
+namespace StartupProjectManager.Ui
 {
-    using System.Threading;
     using Caliburn.Micro;
     using Microsoft.Extensions.Logging;
     using Properties;
     using UiParts.Content.ViewModels;
-    using UiParts.Detail.ViewModels;
-    using UiParts.ProjectTree.ViewModels;
 
     /// <summary>
     /// Class ShellViewModel.
     /// Implements the <see cref="Caliburn.Micro.Screen" />
     /// </summary>
     /// <seealso cref="Caliburn.Micro.Screen" />
-    public class ShellViewModel : Conductor<Screen>.Collection.AllActive
+    // ReSharper disable once ClassNeverInstantiated.Global
+    public class ShellViewModel : Conductor<Screen>.Collection.OneActive
     {
         private readonly ILogger<ShellViewModel> _logger;
-        private readonly IEventAggregator _aggregator;
+        
+        private string title = "StartupProjectManager";
+        private ContentConductorViewModel contentConductorViewModel = null!;
 
-        private string _title = "StartupProjectManager";
-        private ContentConductorViewModel _contentConductorViewModel;
-
+        /// <summary>
+        /// Gets or sets the title.
+        /// </summary>
+        /// <value>The title.</value>
+        // ReSharper disable once UnusedMember.Global
         public string Title
         {
-            get { return _title; }
+            get => title;
             set
             {
-                _title = value;
+                title = value;
                 NotifyOfPropertyChange(() => Title);
             }
         }
 
+        /// <summary>
+        /// Gets or sets the content conductor view model.
+        /// </summary>
+        /// <value>The content conductor view model.</value>
         public ContentConductorViewModel ContentConductorViewModel
         {
-            get
-            {
-                return _contentConductorViewModel;
-            }
+            get => contentConductorViewModel;
             set
             {
-                _contentConductorViewModel = value;
+                contentConductorViewModel = value;
                 NotifyOfPropertyChange(() => ContentConductorViewModel);
             }
         }
@@ -54,14 +57,12 @@ namespace StartupProjectManager.Ui.ViewModels
         /// Initializes a new instance of the <see cref="ShellViewModel" /> class.
         /// </summary>
         /// <param name="logger">The logger.</param>
-        /// <param name="aggregator">The aggregator.</param>
+        /// <param name="contentConductorViewModel">The content conductor view model.</param>
         public ShellViewModel(ILogger<ShellViewModel> logger,
-                              IEventAggregator aggregator,
                               ContentConductorViewModel contentConductorViewModel)
         {
             _logger = logger;
-            _aggregator = aggregator;
-            this._contentConductorViewModel = contentConductorViewModel;
+            ContentConductorViewModel = contentConductorViewModel;
 
 
         }
@@ -73,8 +74,7 @@ namespace StartupProjectManager.Ui.ViewModels
         protected override void OnViewLoaded(object view)
         {
             _logger.LogDebug(Resources.Info_ViewLoaded, nameof(ShellViewModel));
-
-            
+            ActivateItem(ContentConductorViewModel);
         }
     }
 }

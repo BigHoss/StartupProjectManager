@@ -61,7 +61,16 @@ namespace StartupProjectManager.Services.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to service&quot;: &quot;{serviceName}&quot;, &quot;method&quot;: &quot;{methodName}&quot;, &quot;parameter&quot;: {@parameter}.
+        ///   Looks up a localized string similar to &quot;name&quot;: &quot;{0}&quot;, &quot;value&quot;: &quot;{1}&quot;.
+        /// </summary>
+        internal static string Debug_ParameterTemplate {
+            get {
+                return ResourceManager.GetString("Debug_ParameterTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;service&quot;: &quot;{serviceName}&quot;, &quot;method&quot;: &quot;{methodName}&quot;, &quot;parameter&quot;: {@parameter}&quot;.
         /// </summary>
         internal static string Debug_StartMethod {
             get {

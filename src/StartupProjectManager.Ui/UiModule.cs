@@ -17,17 +17,20 @@ namespace StartupProjectManager.Ui
     using System.IO;
     using Autofac;
     using Caliburn.Micro;
+    using Microsoft.Extensions.Caching.Memory;
     using Microsoft.Extensions.Configuration;
     using Serilog;
     using Serilog.Extensions.Autofac.DependencyInjection;
     using Services;
+    using Services.Base;
+    using StartupProjectManager.Services;
 
     /// <summary>
     /// Class InitializeModule.
     /// Implements the <see cref="Autofac.Module" />
     /// </summary>
     /// <seealso cref="Autofac.Module" />
-    public class InitializeModule : Module
+    public class UiModule : Module
     {
         /// <summary>
         /// Override to add registrations to the container.
@@ -37,9 +40,17 @@ namespace StartupProjectManager.Ui
         /// <remarks>Note that the ContainerBuilder parameter is unique to this module.</remarks>
         protected override void Load(ContainerBuilder builder)
         {
+            // register all Screens
             builder.RegisterAssemblyTypes(ThisAssembly)
-                   .AssignableTo<Screen>()
+                   .Where(t => typeof(Screen).IsAssignableFrom(t)
+                               || typeof(IConductor).IsAssignableFrom(t))
                    .AsSelf();
+
+            // register all ui services
+            builder.RegisterAssemblyTypes(ThisAssembly)
+                   .Where(t => typeof(IService).IsAssignableFrom(t))
+                   .SingleInstance()
+                   .AsImplementedInterfaces();
 
             var configuration = new ConfigurationBuilder()
                                 .SetBasePath(Directory.GetParent(AppContext.BaseDirectory).FullName)

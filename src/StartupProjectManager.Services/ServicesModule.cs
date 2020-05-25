@@ -26,8 +26,12 @@ namespace StartupProjectManager.Services
         {
             builder.RegisterModule<DatabaseModule>();
 
+            //builder.RegisterAssemblyTypes(ThisAssembly)
+            //       .Where(x => x.Name.EndsWith("Service"))
+            //       .AsImplementedInterfaces();
+
             builder.RegisterAssemblyTypes(ThisAssembly)
-                   .Where(x => x.Name.EndsWith("Service"))
+                   .Where(t => typeof(IService).IsAssignableFrom(t))
                    .AsImplementedInterfaces();
         }
     }

@@ -1,11 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+// ***********************************************************************
+// Assembly         : StartupProjectManager.Services
+// Author           : Rku
+// Created          : 05-01-2020
+// ***********************************************************************
 
 namespace StartupProjectManager.Services.Services.Base
 {
+    /// <summary>
+    /// Interface IService
+    /// </summary>
     public interface IService
     {
         

@@ -10,7 +10,7 @@
                     <local:AppBootstrapper x:Key="Bootstrapper" />
                 </ResourceDictionary>
                 <ResourceDictionary Source="ResourceDictionaries/StartupProjectManagerIconDictionary.xaml" />
-            </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary.MergedDictionaries>
             
         </ResourceDictionary>
        

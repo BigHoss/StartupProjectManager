@@ -20,9 +20,14 @@
               resource lookups using this strongly typed resource class.
             </summary>
         </member>
+        <member name="P:StartupProjectManager.Services.Properties.Resources.Debug_ParameterTemplate">
+            <summary>
+              Looks up a localized string similar to &quot;name&quot;: &quot;{0}&quot;, &quot;value&quot;: &quot;{1}&quot;.
+            </summary>
+        </member>
         <member name="P:StartupProjectManager.Services.Properties.Resources.Debug_StartMethod">
             <summary>
-              Looks up a localized string similar to service&quot;: &quot;{serviceName}&quot;, &quot;method&quot;: &quot;{methodName}&quot;, &quot;parameter&quot;: {@parameter}.
+              Looks up a localized string similar to &quot;service&quot;: &quot;{serviceName}&quot;, &quot;method&quot;: &quot;{methodName}&quot;, &quot;parameter&quot;: {@parameter}&quot;.
             </summary>
         </member>
         <member name="T:StartupProjectManager.Services.ServicesModule">
@@ -40,55 +45,78 @@
             registered.</param>
             <remarks>Note that the ContainerBuilder parameter is unique to this module.</remarks>
         </member>
-        <member name="T:StartupProjectManager.Services.Services.IProjectItemService">
+        <member name="T:StartupProjectManager.Services.Services.Base.IService">
+            <summary>
+            Interface IService
+            </summary>
+        </member>
+        <member name="T:StartupProjectManager.Services.Services.ProjectItem.IProjectItemService">
             <summary>
             Interface IProjectItemService
             Implements the <see cref="T:StartupProjectManager.Services.Services.Base.IService" />
             </summary>
             <seealso cref="T:StartupProjectManager.Services.Services.Base.IService" />
         </member>
-        <member name="M:StartupProjectManager.Services.Services.IProjectItemService.GetAllProjectItems">
+        <member name="M:StartupProjectManager.Services.Services.ProjectItem.IProjectItemService.GetAll">
             <summary>
             Gets all project items.
             </summary>
             <returns>List&lt;ProjectItem&gt;.</returns>
         </member>
-        <member name="T:StartupProjectManager.Services.Services.ProjectItemService">
+        <member name="M:StartupProjectManager.Services.Services.ProjectItem.IProjectItemService.Add(System.Nullable{System.Int32})">
+            <summary>
+            Adds the specified root item identifier.
+            </summary>
+            <param name="parentItemId">The parent item identifier.</param>
+            <returns>ProjectItemType.</returns>
+        </member>
+        <member name="M:StartupProjectManager.Services.Services.ProjectItem.IProjectItemService.Update(StartupProjectManager.Database.Model.ProjectItem)">
+            <summary>
+            Updates the specified item.
+            </summary>
+            <param name="item">The item.</param>
+            <returns>ProjectItem.</returns>
+        </member>
+        <member name="T:StartupProjectManager.Services.Services.ProjectItem.ProjectItemService">
             <summary>
             Class ProjectItemService.
-            Implements the <see cref="T:StartupProjectManager.Services.Services.IProjectItemService" />
+            Implements the <see cref="T:StartupProjectManager.Services.Services.ProjectItem.IProjectItemService" />
             </summary>
-            <seealso cref="T:StartupProjectManager.Services.Services.IProjectItemService" />
+            <seealso cref="T:StartupProjectManager.Services.Services.ProjectItem.IProjectItemService" />
         </member>
-        <member name="F:StartupProjectManager.Services.Services.ProjectItemService._logger">
+        <member name="M:StartupProjectManager.Services.Services.ProjectItem.ProjectItemService.#ctor(Microsoft.Extensions.Logging.ILogger{StartupProjectManager.Services.Services.ProjectItem.ProjectItemService},StartupProjectManager.Database.Data.StartupProjectManagerContext)">
             <summary>
-            The logger
-            </summary>
-        </member>
-        <member name="F:StartupProjectManager.Services.Services.ProjectItemService._context">
-            <summary>
-            The context
-            </summary>
-        </member>
-        <member name="M:StartupProjectManager.Services.Services.ProjectItemService.#ctor(Microsoft.Extensions.Logging.ILogger{StartupProjectManager.Services.Services.ProjectItemService},StartupProjectManager.Database.Data.StartupProjectManagerContext)">
-            <summary>
-            Initializes a new instance of the <see cref="T:StartupProjectManager.Services.Services.ProjectItemService" /> class.
+            Initializes a new instance of the <see cref="T:StartupProjectManager.Services.Services.ProjectItem.ProjectItemService" /> class.
             </summary>
             <param name="logger">The logger.</param>
             <param name="context">The context.</param>
         </member>
-        <member name="M:StartupProjectManager.Services.Services.ProjectItemService.LogDebugMethodStart(System.String,System.Collections.Generic.List{System.ValueTuple{System.String,System.String}})">
+        <member name="M:StartupProjectManager.Services.Services.ProjectItem.ProjectItemService.LogDebugMethodStart(System.String,System.ValueTuple{System.String,System.String}[])">
             <summary>
             Logs the debug method start.
             </summary>
             <param name="methodName">Name of the method.</param>
             <param name="parameters">The parameters.</param>
         </member>
-        <member name="M:StartupProjectManager.Services.Services.ProjectItemService.GetAllProjectItems">
+        <member name="M:StartupProjectManager.Services.Services.ProjectItem.ProjectItemService.GetAll">
             <summary>
             Gets all project items.
             </summary>
             <returns>List&lt;ProjectItem&gt;.</returns>
+        </member>
+        <member name="M:StartupProjectManager.Services.Services.ProjectItem.ProjectItemService.Add(System.Nullable{System.Int32})">
+            <summary>
+            add as an asynchronous operation.
+            </summary>
+            <param name="parentItemId">The parent item identifier.</param>
+            <returns>ProjectItemType.</returns>
+        </member>
+        <member name="M:StartupProjectManager.Services.Services.ProjectItem.ProjectItemService.Update(StartupProjectManager.Database.Model.ProjectItem)">
+            <summary>
+            Updates the specified item.
+            </summary>
+            <param name="item">The item.</param>
+            <returns>ProjectItem.</returns>
         </member>
     </members>
 </doc>

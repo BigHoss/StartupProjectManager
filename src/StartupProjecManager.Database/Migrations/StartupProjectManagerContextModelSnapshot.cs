@@ -28,7 +28,7 @@ namespace StartupProjectManager.Database.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("ItemTypeId")
+                    b.Property<int>("ItemTypeId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("ModifiedBy")
@@ -38,6 +38,9 @@ namespace StartupProjectManager.Database.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NewProperty")
                         .HasColumnType("TEXT");
 
                     b.Property<int?>("ParentProjectItemId")
@@ -50,6 +53,18 @@ namespace StartupProjectManager.Database.Migrations
                     b.HasIndex("ParentProjectItemId");
 
                     b.ToTable("ProjectItems");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedBy = "Rku",
+                            CreatedOn = new DateTime(2020, 5, 13, 7, 36, 57, 389, DateTimeKind.Utc).AddTicks(5053),
+                            ItemTypeId = 1,
+                            ModifiedBy = "Rku",
+                            ModifiedOn = new DateTime(2020, 5, 13, 7, 36, 57, 389, DateTimeKind.Utc).AddTicks(5053),
+                            Name = "Root"
+                        });
                 });
 
             modelBuilder.Entity("StartupProjectManager.Database.Model.ProjectItemType", b =>
@@ -64,6 +79,9 @@ namespace StartupProjectManager.Database.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("TEXT");
 
+                    b.Property<byte[]>("Icon")
+                        .HasColumnType("BLOB");
+
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("TEXT");
 
@@ -71,18 +89,68 @@ namespace StartupProjectManager.Database.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
                     b.ToTable("ProjectItemTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 2,
+                            CreatedBy = "Rku",
+                            CreatedOn = new DateTime(2020, 5, 13, 7, 36, 57, 389, DateTimeKind.Utc).AddTicks(5053),
+                            ModifiedBy = "Rku",
+                            ModifiedOn = new DateTime(2020, 5, 13, 7, 36, 57, 389, DateTimeKind.Utc).AddTicks(5053),
+                            Name = "Application"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedBy = "Rku",
+                            CreatedOn = new DateTime(2020, 5, 13, 7, 36, 57, 389, DateTimeKind.Utc).AddTicks(5053),
+                            ModifiedBy = "Rku",
+                            ModifiedOn = new DateTime(2020, 5, 13, 7, 36, 57, 389, DateTimeKind.Utc).AddTicks(5053),
+                            Name = "Document"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedBy = "Rku",
+                            CreatedOn = new DateTime(2020, 5, 13, 7, 36, 57, 389, DateTimeKind.Utc).AddTicks(5053),
+                            ModifiedBy = "Rku",
+                            ModifiedOn = new DateTime(2020, 5, 13, 7, 36, 57, 389, DateTimeKind.Utc).AddTicks(5053),
+                            Name = "New"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CreatedBy = "Rku",
+                            CreatedOn = new DateTime(2020, 5, 13, 7, 36, 57, 389, DateTimeKind.Utc).AddTicks(5053),
+                            ModifiedBy = "Rku",
+                            ModifiedOn = new DateTime(2020, 5, 13, 7, 36, 57, 389, DateTimeKind.Utc).AddTicks(5053),
+                            Name = "Project"
+                        },
+                        new
+                        {
+                            Id = 1,
+                            CreatedBy = "Rku",
+                            CreatedOn = new DateTime(2020, 5, 13, 7, 36, 57, 389, DateTimeKind.Utc).AddTicks(5053),
+                            ModifiedBy = "Rku",
+                            ModifiedOn = new DateTime(2020, 5, 13, 7, 36, 57, 389, DateTimeKind.Utc).AddTicks(5053),
+                            Name = "Root"
+                        });
                 });
 
             modelBuilder.Entity("StartupProjectManager.Database.Model.ProjectItem", b =>
                 {
                     b.HasOne("StartupProjectManager.Database.Model.ProjectItemType", "ItemType")
                         .WithMany()
-                        .HasForeignKey("ItemTypeId");
+                        .HasForeignKey("ItemTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("StartupProjectManager.Database.Model.ProjectItem", "ParentProjectItem")
                         .WithMany("ChildProjectItems")

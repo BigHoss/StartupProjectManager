@@ -1,11 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace StartupProjectManager.Ui.ViewModels
+// ***********************************************************************
+// Assembly         : StartupProjectManager.Ui
+// Author           : Rku
+// Created          : 05-04-2020
+// ***********************************************************************
+namespace StartupProjectManager.Ui.UiParts.StatusBar.ViewModels
 {
+    /// <summary>
+    /// Class StatusBarViewModel.
+    /// </summary>
     public class StatusBarViewModel
     {
         
